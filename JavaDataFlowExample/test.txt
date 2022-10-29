@@ -1,0 +1,50 @@
+DataFlowGraph[name=Example1,representedNode=/**
+ * TODO javadoc
+ *
+ * @author daan.vandenheuvel
+ */
+public class Example1 {
+
+    int a;
+
+    public int getA() {
+        return a;
+    }
+
+    public void setA(int inputA) {
+        this.a = inputA;
+    }
+}]fields{
+->a	-> a	-> getA_return_line22_col5	-> getA_return
+
+<-a	<- setA.a	<- inputA	<- inputA
+}
+methods{
+method setA{
+	parameters{
+		inputA	-> inputA	-> setA.a	-> a	-> a	-> getA_return_line22_col5	-> getA_return
+	}
+	changedFields{
+		a	-> a	-> getA_return_line22_col5	-> getA_return
+	}
+	nodes{
+		DataFlowNode[name=setA.a,representedNode=this.a = inputA,in=[inputA->setA.a],out=[setA.a->a],type=<null>]
+		DataFlowNode[name=inputA,representedNode=inputA,in=[inputA->inputA],out=[inputA->setA.a],type=<null>]
+		DataFlowNode[name=inputA,representedNode=int inputA,in=[],out=[inputA->inputA],type=<null>]
+	}
+	return null
+}method getA{
+	parameters{
+	}
+	changedFields{
+	}
+	nodes{
+		DataFlowNode[name=a,representedNode=a,in=[a->a],out=[a->getA_return_line22_col5],type=<null>]
+		DataFlowNode[name=getA_return,representedNode=public int getA() {
+    return a;
+},in=[getA_return_line22_col5->getA_return],out=[],type=<null>]
+		DataFlowNode[name=getA_return_line22_col5,representedNode=return a;,in=[a->getA_return_line22_col5],out=[getA_return_line22_col5->getA_return],type=<null>]
+	}
+	return getA_return
+}
+}
